@@ -31,8 +31,8 @@ class CarouselItems extends Model
     protected $fillable = [
         'carousel_name',
         'image_path',
-       ' description',
-       'user_id'
+       'description',
+       'user_id',
     ];
 
 }
