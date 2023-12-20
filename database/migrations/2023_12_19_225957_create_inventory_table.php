@@ -14,11 +14,12 @@ return new class extends Migration
         Schema::create('inventory', function (Blueprint $table) {
             $table->id('inventory_id');
             $table->unsignedBigInteger('medicine_id'); // Foreign key column
-            $table->foreign('medicine_id')->references('id')->on('medicines');
+            $table->foreign('medicine_id')->references('medicine_id')->on('medicines'); // Corrected reference to 'medicine_id'
+            $table->unsignedBigInteger('supplier_id'); // Foreign key column
+            $table->foreign('supplier_id')->references('supplier_id')->on('supplier'); 
             $table->string('purchase_date')->nullable();
             $table->timestamps();
         });
-
         
     }
     
