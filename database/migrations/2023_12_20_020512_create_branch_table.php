@@ -12,7 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('branch', function (Blueprint $table) {
-            $table->id();
+            $table->id('branch_id');
+            $table->unsignedBigInteger('staff_id'); // Foreign key column
+            $table->foreign('staff_id')->references('staff_id')->on('staff'); 
+            $table->unsignedBigInteger('manager_id'); // Foreign key column
+            $table->foreign('manager_id')->references('manager_id')->on('manager');
+            $table->string('branch_name')->nullable();
+            $table->string('address')->nullable();
             $table->timestamps();
         });
     }
