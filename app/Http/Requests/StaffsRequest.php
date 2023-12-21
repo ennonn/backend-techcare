@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class MedicinesRequest extends FormRequest
+class StaffsRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,11 +22,9 @@ class MedicinesRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'medicine_name'    => 'string|max:255',
-            'manufacturer'     => 'string|required|max:255',
-            'expirydate'       => 'string|nullable|max:255',
-            'quantity'         => 'required|integer',
-            'price'            => 'required|integer',
+            'staff_name'  => 'required|string|max:255',
+            'age'           => 'required|integer',
+            'address'       => 'string|nullable|max:255',
         ];
     }
 }
