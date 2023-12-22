@@ -31,6 +31,6 @@ class Staffs extends Model
     protected $fillable = [
         'staff_name',
         'age',
-       'address',
+        'address',
     ];
 }

@@ -14,14 +14,14 @@ class Branches extends Model
      *
      * @var string
      */
-    protected $table = 'staff';
+    protected $table = 'branch';
 
        /**
      * The primary key associated with the table.
      *
      * @var string
      */
-    protected $primaryKey = 'staff_id';
+    protected $primaryKey = 'branch_id';
 
      /**
      * The attributes that are mass assignable.
@@ -29,8 +29,9 @@ class Branches extends Model
      * @var array
      */
     protected $fillable = [
-            'manager_id',
+            'branch_id',
             'staff_id',
+            'manager_id',
             'branch_name',
             'address',
     ];

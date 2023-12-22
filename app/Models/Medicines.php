@@ -31,8 +31,8 @@ class Medicines extends Model
     protected $fillable = [
         'medicine_name',
         'manufacturer',
-       'expirydate',
-       'quantity',
-       'price',
+        'expirydate',
+        'quantity',
+        'price',
     ];
 }

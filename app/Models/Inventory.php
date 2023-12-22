@@ -14,14 +14,14 @@ class Inventory extends Model
      *
      * @var string
      */
-    protected $table = 'staff';
+    protected $table = 'inventory';
 
        /**
      * The primary key associated with the table.
      *
      * @var string
      */
-    protected $primaryKey = 'staff_id';
+    protected $primaryKey = 'inventory_id';
 
      /**
      * The attributes that are mass assignable.

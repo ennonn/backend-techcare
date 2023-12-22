@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StocksRequest;
+use App\Models\Stocks;
 use Illuminate\Http\Request;
 
 class StocksController extends Controller
@@ -12,23 +14,21 @@ class StocksController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        return Stocks::all();
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StocksRequest $request)
     {
-        //
+
+         // Retrieve the validated input data...
+        $validated = $request->validated();
+
+        $stocks = Stocks::create($validated);
+
+        return $stocks;
     }
 
     /**
@@ -36,15 +36,7 @@ class StocksController extends Controller
      */
     public function show(string $id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
+        return Stocks::findOrFail($id);
     }
 
     /**
@@ -60,6 +52,10 @@ class StocksController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $stocks = Stocks::findOrFail($id);
+        
+        $stocks->delete();
+
+        return $stocks;
     }
 }
