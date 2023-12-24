@@ -29,40 +29,48 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/carousel',[CarouselItemsController::class, 'index']);
 Route::get('/carousel/{id}',[CarouselItemsController::class, 'show']);
 Route::post('/carousel',[CarouselItemsController::class, 'store']);
+Route::put('/carousel/{id}',[CarouselItemsController::class, 'update']);
 Route::delete('/carousel/{id}',[CarouselItemsController::class, 'destroy']);
 
 Route::get('/medicine',[MedicinesController::class, 'index']);
 Route::get('/medicine/{id}',[MedicinesController::class, 'show']);
 Route::post('/medicine',[MedicinesController::class, 'store']);
+Route::put('/medicine/{id}',[MedicinesController::class, 'update']);
 Route::delete('/medicine/{id}',[MedicinesController::class, 'destroy']);
 
 
 Route::get('/supplier',[SupplierController::class, 'index']);
 Route::get('/supplier/{id}',[SupplierController::class, 'show']);
 Route::post('/supplier',[SupplierController::class, 'store']);
+Route::put('/supplier/{id}',[SupplierController::class, 'update']);
 Route::delete('/supplier/{id}',[SupplierController::class, 'destroy']);
 
 Route::get('/staff',[StaffController::class, 'index']);
 Route::get('/staff/{id}',[StaffController::class, 'show']);
 Route::post('/staff',[StaffController::class, 'store']);
+Route::put('/staff/{id}',[StaffController::class, 'update']);
 Route::delete('/staff/{id}',[StaffController::class, 'destroy']);
 
 Route::get('/manager',[ManagerController::class, 'index']);
 Route::get('/manager/{id}',[ManagerController::class, 'show']);
 Route::post('/manager',[ManagerController::class, 'store']);
+Route::put('/manager/{id}',[ManagerController::class, 'update']);
 Route::delete('/manager/{id}',[ManagerController::class, 'destroy']);
 
 Route::get('/inventory',[InventoryController::class, 'index']);
 Route::get('/inventory/{id}',[InventoryController::class, 'show']);
 Route::post('/inventory',[InventoryController::class, 'store']);
+Route::put('/inventory/{id}',[InventoryController::class, 'update']);
 Route::delete('/inventory/{id}',[InventoryController::class, 'destroy']);
 
 Route::get('/branch',[BranchController::class, 'index']);
 Route::get('/branch/{id}',[BranchController::class, 'show']);
+Route::put('/branch/{id}',[BranchController::class, 'update']);
 Route::post('/branch',[BranchController::class, 'store']);
 Route::delete('/branch/{id}',[BranchController::class, 'destroy']);
 
 Route::get('/stock',[StocksController::class, 'index']);
 Route::get('/stock/{id}',[StocksController::class, 'show']);
+Route::put('/stock/{id}',[StocksController::class, 'update']);
 Route::post('/stock',[StocksController::class, 'store']);
 Route::delete('/stock/{id}',[StocksController::class, 'destroy']);

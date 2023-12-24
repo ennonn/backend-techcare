@@ -22,8 +22,6 @@ class InventoryController extends Controller
      */
     public function store(InventoryRequest $request)
     {
-
-         // Retrieve the validated input data...
         $validated = $request->validated();
 
         $inventory = Inventory::create($validated);
@@ -42,9 +40,15 @@ class InventoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(InventoryRequest $request, string $id)
     {
-        //
+        $validated = $request->validated();
+
+        $inventory = Inventory::findOrFail($id);
+
+        $inventory->update($validated);
+
+        return $inventory;
     }
 
     /**

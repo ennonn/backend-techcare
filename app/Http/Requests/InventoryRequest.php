@@ -11,7 +11,7 @@ class InventoryRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,7 +25,7 @@ class InventoryRequest extends FormRequest
             'medicine_id'      => 'required|integer',
             'supplier_id'      => 'required|integer',
             'quantity'         => 'required|integer',
-            'purchase_date'    => 'required|integer',
+            'purchase_date'    => 'required|nullable|string|max:255',
         ];
     }
 }

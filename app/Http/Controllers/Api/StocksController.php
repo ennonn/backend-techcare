@@ -22,8 +22,6 @@ class StocksController extends Controller
      */
     public function store(StocksRequest $request)
     {
-
-         // Retrieve the validated input data...
         $validated = $request->validated();
 
         $stocks = Stocks::create($validated);
@@ -42,9 +40,15 @@ class StocksController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StocksRequest $request, string $id)
     {
-        //
+        $validated = $request->validated();
+
+        $stocks = Stocks::findOrFail($id);
+
+        $stocks->update($validated);
+
+        return $stocks;
     }
 
     /**

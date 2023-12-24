@@ -23,7 +23,6 @@ class BranchController extends Controller
     public function store(BranchesRequest $request)
     {
 
-         // Retrieve the validated input data...
         $validated = $request->validated();
 
         $branches = Branches::create($validated);
@@ -42,9 +41,15 @@ class BranchController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(BranchesRequest $request, string $id)
     {
-        //
+        $validated = $request->validated();
+
+        $branches = Branches::findOrFail($id);
+
+        $branches->update($validated);
+
+        return $branches;
     }
 
     /**

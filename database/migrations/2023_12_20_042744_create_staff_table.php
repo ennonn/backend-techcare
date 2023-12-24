@@ -14,7 +14,7 @@ return new class extends Migration
             Schema::create('staff', function (Blueprint $table) {
                 $table->id('staff_id');
                 $table->string('staff_name')->nullable();
-                $table->string('age')->nullable();
+                $table->integer('age')->nullable();
                 $table->string('address')->nullable();
                 $table->timestamps();
             });

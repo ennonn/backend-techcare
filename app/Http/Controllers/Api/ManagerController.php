@@ -23,12 +23,11 @@ class ManagerController extends Controller
     public function store(ManagersRequest $request)
     {
 
-         // Retrieve the validated input data...
         $validated = $request->validated();
 
-        $managers = Managers::create($validated);
+        $medicines = Managers::create($validated);
 
-        return $managers;
+        return $medicines;
     }
 
     /**
@@ -42,9 +41,15 @@ class ManagerController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ManagersRequest $request, string $id)
     {
-        //
+        $validated = $request->validated();
+
+        $managers = Managers::findOrFail($id);
+
+        $managers->update($validated);
+
+        return $managers;
     }
 
     /**

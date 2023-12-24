@@ -23,7 +23,6 @@ class StaffController extends Controller
     public function store(StaffsRequest $request)
     {
 
-         // Retrieve the validated input data...
         $validated = $request->validated();
 
         $staffs = Staffs::create($validated);
@@ -42,9 +41,15 @@ class StaffController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StaffsRequest $request, string $id)
     {
-        //
+        $validated = $request->validated();
+
+        $staffs = Staffs::findOrFail($id);
+
+        $staffs->update($validated);
+
+        return $staffs;
     }
 
     /**

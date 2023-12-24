@@ -11,7 +11,7 @@ class MedicinesRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,7 @@ class MedicinesRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'medicine_name'    => 'string|max:255',
+            'medicine_name'    => 'string|required|max:255',
             'manufacturer'     => 'string|required|max:255',
             'expirydate'       => 'string|nullable|max:255',
             'quantity'         => 'required|integer',

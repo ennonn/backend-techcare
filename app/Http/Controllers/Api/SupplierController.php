@@ -22,8 +22,6 @@ class SupplierController extends Controller
      */
     public function store(SuppliersRequest $request)
     {
-
-         // Retrieve the validated input data...
         $validated = $request->validated();
 
         $suppliers = Suppliers::create($validated);
@@ -42,9 +40,15 @@ class SupplierController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(SuppliersRequest $request, string $id)
     {
-        //
+        $validated = $request->validated();
+
+        $suppliers = Suppliers::findOrFail($id);
+
+        $suppliers->update($validated);
+
+        return $suppliers;
     }
 
     /**

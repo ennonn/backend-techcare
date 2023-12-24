@@ -11,7 +11,7 @@ class SuppliersRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,7 +23,7 @@ class SuppliersRequest extends FormRequest
     {
         return [
             'supplier_name'    => 'string|max:255',
-            'contactinfo'       => 'string|nullable|max:255',
+            'contact_info'       => 'string|nullable|max:255',
         ];
     }
 }
