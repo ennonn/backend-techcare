@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CarouselItemsController;
@@ -22,9 +23,29 @@ use App\Http\Controllers\Api\UserController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+Route::controller(AuthController::class)->group(function () {
+    Route::post('/login',       'login')->name('user.login');
+    Route::post('/logout',      'logout');
+});
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::controller(StaffController::class)->group(function () {
+    Route::get('/staff',             'index');
+    Route::get('/staff/{id}',         'show');
+    Route::post('/staff',            'store');
+    Route::put('/staff/{id}',       'update');
+    Route::delete('/staff/{id}',   'destroy');
+});
+
+Route::controller(ManagerController::class)->group(function () {
+    Route::get('/manager',           'index');
+    Route::get('/manager/{id}',       'show');
+    Route::post('/manager',          'store');
+    Route::put('/manager/{id}',     'update');
+    Route::delete('/manager/{id}', 'destroy');
 });
 
 Route::get('/carousel',[CarouselItemsController::class, 'index']);
@@ -33,13 +54,13 @@ Route::post('/carousel',[CarouselItemsController::class, 'store']);
 Route::put('/carousel/{id}',[CarouselItemsController::class, 'update']);
 Route::delete('/carousel/{id}',[CarouselItemsController::class, 'destroy']);
 
-Route::get('/user',[UserController::class, 'index']);
-Route::get('/user/{id}',[UserController::class, 'show']);
-Route::post('/user',[UserController::class, 'store'])->name('user.store');
-Route::put('/user/{id}',[UserController::class, 'update'])->name('user.update');
-Route::put('/user/email/{id}',[UserController::class, 'email'])->name('user.email');
-Route::put('/user/password/{id}',[UserController::class, 'password'])->name('user.password');
-Route::delete('/user/{id}',[UserController::class, 'destroy']);
+// Route::get('/user',[UserController::class, 'index']);
+// Route::get('/user/{id}',[UserController::class, 'show']);
+// Route::post('/user',[UserController::class, 'store'])->name('user.store');
+// Route::put('/user/{id}',[UserController::class, 'update'])->name('user.update');
+// Route::put('/user/email/{id}',[UserController::class, 'email'])->name('user.email');
+// Route::put('/user/password/{id}',[UserController::class, 'password'])->name('user.password');
+// Route::delete('/user/{id}',[UserController::class, 'destroy']);
 
 Route::get('/medicine',[MedicinesController::class, 'index']);
 Route::get('/medicine/{id}',[MedicinesController::class, 'show']);
@@ -53,18 +74,6 @@ Route::get('/supplier/{id}',[SupplierController::class, 'show']);
 Route::post('/supplier',[SupplierController::class, 'store']);
 Route::put('/supplier/{id}',[SupplierController::class, 'update']);
 Route::delete('/supplier/{id}',[SupplierController::class, 'destroy']);
-
-Route::get('/staff',[StaffController::class, 'index']);
-Route::get('/staff/{id}',[StaffController::class, 'show']);
-Route::post('/staff',[StaffController::class, 'store']);
-Route::put('/staff/{id}',[StaffController::class, 'update']);
-Route::delete('/staff/{id}',[StaffController::class, 'destroy']);
-
-Route::get('/manager',[ManagerController::class, 'index']);
-Route::get('/manager/{id}',[ManagerController::class, 'show']);
-Route::post('/manager',[ManagerController::class, 'store']);
-Route::put('/manager/{id}',[ManagerController::class, 'update']);
-Route::delete('/manager/{id}',[ManagerController::class, 'destroy']);
 
 Route::get('/inventory',[InventoryController::class, 'index']);
 Route::get('/inventory/{id}',[InventoryController::class, 'show']);
