@@ -33,11 +33,15 @@ class AuthController extends Controller
      * Login using the specific resource.
      */
     
-     public function logout(UserRequest  $userRequest)
+     public function logout(Request  $request)
      {
+        $request->user()->tokens()->delete();
 
 
+        $response = [
+            'message' => 'Logout.'
+        ];
 
-        return false;
+        return $response;
      }
 }
