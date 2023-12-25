@@ -11,17 +11,9 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
-    /**
-     * Login using the specific resource.
-     */
-    
     public function login(UserRequest  $request)
     {
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
-     
+
         $user = User::where('email', $request->email)->first();
      
         if (! $user || ! Hash::check($request->password, $user->password)) {
@@ -32,10 +24,10 @@ class AuthController extends Controller
 
         $response = [
             'user' => $user,
-            'token' => $user ->createToken($request ->email)->plainTextToken
+            'token' => $user->createToken($request->email)->plainTextToken
         ];
      
-        return response($response, 200);
+        return $response;
     }
      /**
      * Login using the specific resource.

@@ -15,8 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
-        return User::findOrFail();
+        return User::all();
     }
 
 
