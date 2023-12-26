@@ -40,7 +40,8 @@ class UserController extends Controller
 
         $validated = $request->validated();
 
-        $User->name = $validated['name'];
+        $User->firstname = $validated['firstname'];
+        $User->lastname = $validated['lastname'];
 
         $User->save();
 

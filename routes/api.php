@@ -30,7 +30,7 @@ Route::post('/user', [UserController::class,'store'])->name('user.store');
 
 //Privagte APIs
 Route::middleware(['auth:sanctum'])->group(function () {
-    Route::post('/logout',[AuthController::class,'logout' ]);
+    Route::get('/logout',[AuthController::class,'logout' ]);
 
     Route::controller(UserController::class)->group(function () {
         Route::get('/user',                       'index');
