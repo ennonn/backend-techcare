@@ -32,7 +32,7 @@ class Medicines extends Model
         'medicine_name',
         'manufacturer',
         'expirydate',
-        'quantity',
+        'unit',
         'price',
     ];
 }

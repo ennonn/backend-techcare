@@ -62,4 +62,16 @@ class MedicinesController extends Controller
 
         return $medicines;
     }
+
+    public function logout(Request  $request)
+    {
+       $request->user()->tokens()->delete();
+
+
+       $response = [
+           'message' => 'Logout.'
+       ];
+
+       return $response;
+    }
 }

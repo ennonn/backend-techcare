@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('medicine_name')->nullable();
             $table->string('manufacturer');
             $table->string('expirydate')->nullable();
-            $table->integer('quantity')->nullable();
+            $table->integer('unit')->nullable();
             $table->integer('price')->nullable();
             $table->timestamps();
         });

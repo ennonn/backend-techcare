@@ -62,4 +62,16 @@ class InventoryController extends Controller
 
         return $inventory;
     }
+
+    public function logout(Request  $request)
+    {
+       $request->user()->tokens()->delete();
+
+
+       $response = [
+           'message' => 'Logout.'
+       ];
+
+       return $response;
+    }
 }

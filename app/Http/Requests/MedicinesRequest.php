@@ -25,7 +25,7 @@ class MedicinesRequest extends FormRequest
             'medicine_name'    => 'string|required|max:255',
             'manufacturer'     => 'string|required|max:255',
             'expirydate'       => 'string|nullable|max:255',
-            'quantity'         => 'required|integer',
+            'unit'             => 'required|integer',
             'price'            => 'required|integer',
         ];
     }

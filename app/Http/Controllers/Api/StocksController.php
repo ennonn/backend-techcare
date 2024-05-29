@@ -62,4 +62,16 @@ class StocksController extends Controller
 
         return $stocks;
     }
+
+    public function logout(Request  $request)
+    {
+       $request->user()->tokens()->delete();
+
+
+       $response = [
+           'message' => 'Logout.'
+       ];
+
+       return $response;
+    }
 }

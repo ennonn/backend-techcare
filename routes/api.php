@@ -4,12 +4,9 @@ use App\Http\Controllers\Api\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\InventoryController;
-use App\Http\Controllers\Api\ManagerController;
 use App\Http\Controllers\Api\MedicinesController;
-use App\Http\Controllers\Api\StaffController;
-use App\Http\Controllers\Api\StocksController;
 use App\Http\Controllers\Api\SupplierController;
-use App\Http\Controllers\Api\BranchController;
+use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\UserController;
 
 /*
@@ -25,7 +22,7 @@ use App\Http\Controllers\Api\UserController;
 
 //Public APIs
 Route::post('/login',[AuthController::class,'login' ])->name('user.login');
-Route::post('/user', [UserController::class,'store'])->name('user.store');
+// Route::post('/user', [UserController::class,'store'])->name('user.store');
 
 
 //Privagte APIs
@@ -39,22 +36,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::put('/user/email/{id}',            'email')->name('user.email');
         Route::put('/user/password/{id}',      'password')->name('user.password');
         Route::delete('/user/{id}',             'destroy');
-    });
-
-    Route::controller(StaffController::class)->group(function () {
-        Route::get('/staff',                      'index');
-        Route::get('/staff/{id}',                  'show');
-        Route::post('/staff',                     'store');
-        Route::put('/staff/{id}',                'update');
-        Route::delete('/staff/{id}',            'destroy');
-    });
-
-    Route::controller(ManagerController::class)->group(function () {
-        Route::get('/manager',                    'index');
-        Route::get('/manager/{id}',                'show');
-        Route::post('/manager',                   'store');
-        Route::put('/manager/{id}',              'update');
-        Route::delete('/manager/{id}',          'destroy');
     });
 
     Route::controller(InventoryController::class)->group(function () {
@@ -81,23 +62,12 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::delete('/supplier/{id}',        'destroy');
     });
 
-    Route::controller(BranchController::class)->group(function () {
-        Route::get('/branch',                   'index');
-        Route::get('/branch/{id}',               'show');
-        Route::put('/branch/{id}',             'update');
-        Route::post('/branch',                  'store');
-        Route::delete('/branch/{id}',         'destroy');
-    });
+     // User Specific APIs
+     Route::get('/profile/show',         [ProfileController::class, 'show']);
+     Route::put('/profile/image',        [ProfileController::class, 'image'])->name('profile.image');
 
-    Route::controller(StocksController::class)->group(function () {
-        Route::get('/stock',                    'index');
-        Route::get('/stock/{id}',                'show');
-        Route::put('/stock/{id}',              'update');
-        Route::post('/stock',                   'store');
-        Route::delete('/stock/{id}',          'destroy');
-
-    });
-
+     Route::post('/user', [UserController::class,'store'])->name('user.store');
+     
 });
 
 

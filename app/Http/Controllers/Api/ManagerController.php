@@ -63,4 +63,16 @@ class ManagerController extends Controller
 
         return $managers;
     }
+
+    public function logout(Request  $request)
+    {
+       $request->user()->tokens()->delete();
+
+
+       $response = [
+           'message' => 'Logout.'
+       ];
+
+       return $response;
+    }
 }
