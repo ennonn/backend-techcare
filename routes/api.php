@@ -22,7 +22,7 @@ use App\Http\Controllers\Api\UserController;
 
 //Public APIs
 Route::post('/login',[AuthController::class,'login' ])->name('user.login');
-// Route::post('/user', [UserController::class,'store'])->name('user.store');
+Route::post('/user', [UserController::class,'store'])->name('user.store');
 
 
 //Privagte APIs
@@ -66,7 +66,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
      Route::get('/profile/show',         [ProfileController::class, 'show']);
      Route::put('/profile/image',        [ProfileController::class, 'image'])->name('profile.image');
 
-     Route::post('/user', [UserController::class,'store'])->name('user.store');
      
 });
 
